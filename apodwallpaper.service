@@ -1,0 +1,10 @@
+[Unit]
+Description=apodwallpaper - Script to set the APOD image as wallpaper
+Documentation=https://github.com/baual/apod-wallpaper
+
+[Service]
+Type=oneshot
+ExecStart=
+
+[Install]
+WantedBy=default.target
