@@ -19,21 +19,18 @@ True - connection internet
 False - pas de connection
 
 """
-from urllib3 import PoolManager
+import urllib.request
 
 def internet_conn() -> bool:
     logger.info("Checking internet connectivity")
-    http = PoolManager(timeout=3.0)
-    r = http.request('GET', 'google.com', preload_content=False)
-    code = r.status
-    r.release_conn()
-    if code == 200:
+    try:
+        urllib.request.urlopen("https://www.google.com")
         return True
-    else:
+    except urllib.error.URLError:
         return False
         logger.error("No internet connectivity")
     
-#print(check_internet_conn())
+# print(internet_conn())
 
 
 """
