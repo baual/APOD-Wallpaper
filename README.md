@@ -8,9 +8,7 @@ Et, comme nous sommes tous assez paresseux, *systemd* lancera le script au déma
 
 ## Dépendances
 
-Vous avez besoin de [Python 3](https://www.python.org/), [pip](https://pypi.org/project/pip/), le programme [feh](https://feh.finalrewind.org/) et la bibliothèque Python [requests](https://requests.readthedocs.io/en/master/).
-
-Pour installer la bibliothèque *requests*, vous pouvez lancer la commande suivante et *pip* l'installera en utilisant le fichier [requirements.txt](APOD-Wallpaper/requirements.txt).
+Vous avez besoin de [Python 3.11 minimum](https://www.python.org/), [pip](https://pypi.org/project/pip/), le programme [feh](https://feh.finalrewind.org/) (feh est installé avec apt-get dans le makefile).
 
 ``` bash
 make init
