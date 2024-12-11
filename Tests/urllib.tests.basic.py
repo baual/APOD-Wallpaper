@@ -28,7 +28,7 @@ print(final_url)
 import urllib.request
  
 url = 'https://www.tresfacile.net/wp-content/uploads/2022/08/miniature-les-briques-de-bases-en-langage-python.png'
-filename = 'miniature-les-briques-de-bases-en-langage-python.png'
+filename = './Tests/fichier.png'
  
 urllib.request.urlretrieve(url, filename)
-print('Le fichier a été téléchargé avec succès.')
+#print('Le fichier a été téléchargé avec succès.')
