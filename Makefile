@@ -2,6 +2,7 @@
 
 init:
 	pip3 install -r requirements.txt
+	sudo apt-get install feh -y
 
 config:
 	sed -i 's|ExecStart=.*|ExecStart=python ${PWD}/apodwallpaper.py|g' apodwallpaper.service
