@@ -71,11 +71,9 @@ def getAPOD() -> str:
             if information.get('media_type') == "image":
                 url = information['hdurl']
                 isphoto = True
-            elif information.get('media_type') == "video":
-                url = information['url']
-                isphoto = False
             else:
-                raise RuntimeError("APOD is not an image or video")
+                isphoto = False
+                raise RuntimeError("APOD is not an image")
         else:
             logger.error("Can't get the APOD image URL")
             logger.error("Status code: %s", response.status)
@@ -99,11 +97,13 @@ def checkAPOD(apodPath) -> int:
     logger.info("Checking if image need to be updated")
     res = 1
     if isfile(apodPath):
-        # File exists
+        #File exists
+        
         #obsolete
         #lastModDay = datetime.utcfromtimestamp(
         #    getmtime(apodPath)).strftime("%Y/%m/%d")
         #today = datetime.utcnow().strftime("%Y/%m/%d")
+        
         lastModDay =datetime.fromtimestamp(getmtime(apodPath)).replace(tzinfo=timezone.utc).strftime("%Y/%m/%d")
         today = datetime.now().replace(tzinfo=timezone.utc).strftime("%Y/%m/%d")  
         if lastModDay == today:
@@ -123,6 +123,7 @@ def checkAPOD(apodPath) -> int:
 
 
 """Function that shows the user of the APOD name
+def apodNotify(apodName) -> int
 
 Parameters
 ----------
