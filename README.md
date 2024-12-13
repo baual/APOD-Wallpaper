@@ -6,7 +6,17 @@ Il s'agit d'une refonte d'un [script original en python](https://github.com/char
 
 Et, comme nous sommes tous assez paresseux, *systemd* lancera le script au démarrage, après avoir eu une connexion internet, il suffit de suivre les instructions ci-dessous.
 
-## Dépendances
+## Makefile
+
+### Lancer la séquence complète de Makefile
+
+``` bash
+make all
+```
+
+### élement par élément
+
+#### Dépendances
 
 Vous avez besoin de [Python 3.11 minimum](https://www.python.org/), [pip](https://pypi.org/project/pip/), le programme [feh](https://feh.finalrewind.org/) (feh est installé avec apt-get dans le makefile).
 
@@ -14,7 +24,7 @@ Vous avez besoin de [Python 3.11 minimum](https://www.python.org/), [pip](https:
 make init
 ```
 
-## Exécution du script
+#### Exécution du script
 
 Pour exécuter le script manuellement, et changer le fond d'écran, il suffit de lancer la commande suivante :
 

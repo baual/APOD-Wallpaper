@@ -1,7 +1,6 @@
 #!make
-
 init:
-	pip install -r requirements.txt
+	pip3 install -r requirements.txt
 	sudo apt-get install feh -y
 
 config:
@@ -15,6 +14,9 @@ setup:
 	systemctl --user enable apodwallpaper.service
 
 run:
-	python apodwallpaper.py
+	python3 apodwallpaper.py
 
-.PHONY: init, config, setup, run
+all: init config setup run
+
+.PHONY: 
+	init, config, setup, run
