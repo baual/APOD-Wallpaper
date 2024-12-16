@@ -2,9 +2,11 @@
 init:
 	pip3 install -r requirements.txt
 	sudo apt-get install feh -y
+	mkdir ~/.APOD/
+	cp ${PWD}/apodwallpaper.py ~/.APOD
 
 config:
-	sed -i 's|ExecStart=.*|ExecStart=python ${PWD}/apodwallpaper.py|g' apodwallpaper.service
+	sed -i 's|ExecStart=.*|ExecStart=python ~/.APOD/apodwallpaper.py|g' apodwallpaper.service
 
 .ONESHELL:
 setup:
@@ -14,7 +16,7 @@ setup:
 	systemctl --user enable apodwallpaper.service
 
 run:
-	python3 apodwallpaper.py
+	python3 ~/.APOD/apodwallpaper.py
 
 all: init config setup run
 

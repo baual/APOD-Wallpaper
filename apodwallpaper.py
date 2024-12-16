@@ -215,7 +215,7 @@ def downloadAPOD(apodURL, apodPath, apodIsImage) -> int:
 def main():
     logger.info("Init script")
     # Path to APOD image on local storage
-    apodPath = expanduser("~/.APOD.wallpaper.png")
+    apodPath = expanduser("~/.APOD/wallpaper.png")
     # Check if new APOD image available
     if checkAPOD(apodPath) != 0:
         if not internet_conn():
