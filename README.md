@@ -8,10 +8,16 @@ Et, comme nous sommes tous assez paresseux, *systemd* lancera le script au déma
 
 ## Makefile
 
-### Lancer la séquence complète de Makefile
+### installer le service
 
 ``` bash
-make all
+make install
+```
+
+### désinstaller le service
+
+``` bash
+make uninstall
 ```
 
 ### élement par élément
