@@ -1,14 +1,16 @@
 #!make
+lieu = ${HOME}/.APOD
+
 init:
 	pip3 install -r requirements.txt
 	sudo apt-get install feh -y
 #copie les fichiers utiles
-	mkdir ~/.APOD/
-	cp ${PWD}/*.* ~/.APOD
+	mkdir $(lieu)
+	cp ${PWD}/apodwallpaper.* $(lieu)
 
 config:
-#modifie le fichier qui va servir au service	
-	sed -i 's|ExecStart=.*|ExecStart=python ~/.APOD/apodwallpaper.py|g' ~/.APOD/apodwallpaper.service
+#modifie le fichier qui va servir au service
+	sed -i 's|ExecStart=.*|ExecStart=python3 $(lieu)/apodwallpaper.py|g' $(lieu)/apodwallpaper.service
 
 .ONESHELL:
 setup:
@@ -18,7 +20,7 @@ setup:
 	systemctl --user enable apodwallpaper.service
 
 run:
-	python3 ~/.APOD/apodwallpaper.py
+	python3 $(lieu)/apodwallpaper.py
 
 install: init config setup
 
@@ -31,8 +33,8 @@ uninstall:
 	systemctl disable apodwallpaper.service
 	sudo rm /etc/systemd/system/apodwallpaper.service
 	sudo rm /etc/systemd/system/apodwallpaper.service # and symlinks that might be related
-	sudo rm /usr/lib/systemd/system/apodwallpaper.service 
-	sudo rm /usr/lib/systemd/system/apodwallpaper.service # and symlinks that might be related
+#	sudo rm /usr/lib/systemd/system/apodwallpaper.service 
+#	sudo rm /usr/lib/systemd/system/apodwallpaper.service # and symlinks that might be related
 	systemctl daemon-reload
 	systemctl reset-failed
 
