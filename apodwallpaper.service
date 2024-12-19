@@ -1,10 +1,15 @@
+# https://doc.ubuntu-fr.org/creer_un_service_avec_systemd
+
 [Unit]
 Description=apodwallpaper - Script to set the APOD image as wallpaper
 Documentation=https://github.com/baual/apod-wallpaper
+# on a besoin que interface graphique X soit lancée
+PartOf=graphical-session.target
+After=graphical-session.target
 
 [Service]
 Type=oneshot
 ExecStart=
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target

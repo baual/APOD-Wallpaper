@@ -27,7 +27,6 @@ install: init config setup
 uninstall:
 #je n'enlève que le service, les fichiers peuvent etre supprimés à la et les dépendances de Python et feh
 #utilisés par d'autres
-
 #enleve toute notion de service
 	systemctl stop apodwallpaper.service
 	systemctl disable apodwallpaper.service
@@ -37,6 +36,8 @@ uninstall:
 #	sudo rm /usr/lib/systemd/system/apodwallpaper.service # and symlinks that might be related
 	systemctl daemon-reload
 	systemctl reset-failed
+# enleve le réperoire
+	rm -rf $(lieu)
 
 .PHONY: 
 	init, config, setup, run, uninstall
