@@ -31,7 +31,7 @@ uninstall:
 	systemctl stop apodwallpaper.service
 	systemctl disable apodwallpaper.service
 	sudo rm /etc/systemd/system/apodwallpaper.service
-	sudo rm /etc/systemd/system/apodwallpaper.service # and symlinks that might be related
+#	sudo rm /etc/systemd/system/apodwallpaper.service # and symlinks that might be related
 #	sudo rm /usr/lib/systemd/system/apodwallpaper.service 
 #	sudo rm /usr/lib/systemd/system/apodwallpaper.service # and symlinks that might be related
 	systemctl daemon-reload
