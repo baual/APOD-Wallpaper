@@ -2,7 +2,7 @@
 
 ## Basic Info
 
-Il s'agit d'une refonte d'un [script original en python](https://github.com/charly98cma/apod-wallpaper) de [Charly98cma](https://github.com/Charly98cma) utilisant l'API NASA *Astronomy Picture Of the Day* ([APOD](https://apod.nasa.gov/apod/astropix.html)) pour définir l'APOD comme image de fond d'écran à chaque fois que vous exécutez le script.
+Il s'agit d'une refonte d'un [script original en python](https://github.com/charly98cma/apod-wallpaper) de [Charly98cma](https://github.com/Charly98cma) utilisant l'API NASA *Astronomy Picture Of the Day* ([APOD](https://science.nasa.gov/apod)) pour définir l'APOD comme image de fond d'écran à chaque fois que vous exécutez le script.
 
 Et, comme nous sommes tous assez paresseux, *systemd* lancera le script au démarrage, après avoir eu une connexion internet, il suffit de suivre les instructions ci-dessous.
 
