@@ -52,7 +52,7 @@ getAPOD()
 
 Function that gets the APOD url using the NASA API
 
-Return value (str)
+Return value (tuple)
 ------------------
 APOD URL - URL retrieved successfully
 None     - Error

@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
-from os.path    import getmtime, expanduser
+from os.path import getmtime, expanduser
 
-apodPath = expanduser("~/.APOD.wallpaper.png")
+apodPath = expanduser("~/.APOD/wallpaper.png")
 
 #obsolete
 #lastModDay = datetime.utcfromtimestamp(

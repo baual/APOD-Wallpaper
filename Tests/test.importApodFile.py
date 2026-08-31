@@ -95,7 +95,7 @@ from os.path    import expanduser
 
 apodIsImage, apodURL, apodTitle  = getAPOD()
 
-apodPath = expanduser("~/.APOD.wallpaper.png")
+apodPath = expanduser("~/.APOD/wallpaper.png")
 
 if apodURL is None:
     exit(2)
