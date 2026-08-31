@@ -58,7 +58,7 @@ APOD URL - URL retrieved successfully
 None     - Error
 
 """
-def getAPOD() -> str:
+def getAPOD() -> tuple:
     logger.info("Downloading APOD image URL")
     # Used DEMO_KEY as the api_key since the constraints are based on IP
     my_url = "https://api.nasa.gov/planetary/apod"
