@@ -91,11 +91,15 @@ def downloadAPOD(apodURL, apodPath, apodIsImage) -> int:
         result = 1
     return result
 
-from os.path    import expanduser
+from os.path    import expanduser, abspath
 
 apodIsImage, apodURL, apodTitle  = getAPOD()
 
-apodPath = expanduser("~/.APOD/wallpaper.png")
+# does not work well on windows even if that is for Linux I would like to have a cross-platform solution
+#apodPath = expanduser("~/.APOD/wallpaper.png")
+# Solution with absolute path abspath()
+apodPath= abspath("./wallpaper.png") 
+print(apodPath)
 
 if apodURL is None:
     exit(2)
