@@ -18,7 +18,7 @@ import json
 from datetime   import datetime, timezone
 
 from os         import remove
-from os.path    import isfile, getmtime, dirname, abspath, expanduser
+from os.path    import isfile, getmtime, dirname, expanduser
 
 from subprocess import run as subRun, DEVNULL as subDevNull
 
@@ -58,12 +58,8 @@ APOD URL - URL retrieved successfully
 None     - Error
 
 """
-def getAPOD() -> tuple:
-    logger.info("Downloading APOD image URL")
-    # Used DEMO_KEY as the api_key since the constraints are based on IP
-    my_url = "https://api.nasa.gov/planetary/apod"
-    my_header="api_key=DEMO_KEY"
-    with urlopen(my_url+"?"+my_header) as response: 
+def getAPOD(date) -> tuple:
+    with urlopen(f"https://science.nasa.gov/wp-json/wp/v2/apod-basic/{date}") as response:
     # Status code check
         if response.status == 200:
             logger.info("Download successful")
@@ -71,9 +67,11 @@ def getAPOD() -> tuple:
             if information.get('media_type') == "image":
                 url = information['hdurl']
                 isphoto = True
-            else:
+            elif information.get('media_type') == "video":
+                url = information['url']
                 isphoto = False
-                raise RuntimeError("APOD is not an image")
+            else:
+                raise RuntimeError("APOD is not an image or video")
         else:
             logger.error("Can't get the APOD image URL")
             logger.error("Status code: %s", response.status)
@@ -98,12 +96,7 @@ def checkAPOD(apodPath) -> int:
     res = 1
     if isfile(apodPath):
         #File exists
-        
-        #obsolete
-        #lastModDay = datetime.utcfromtimestamp(
-        #    getmtime(apodPath)).strftime("%Y/%m/%d")
-        #today = datetime.utcnow().strftime("%Y/%m/%d")
-        
+
         lastModDay =datetime.fromtimestamp(getmtime(apodPath)).replace(tzinfo=timezone.utc).strftime("%Y/%m/%d")
         today = datetime.now().replace(tzinfo=timezone.utc).strftime("%Y/%m/%d")  
         if lastModDay == today:
@@ -221,7 +214,7 @@ def main():
         if not internet_conn():
             exit(1)
             # Get APOD URL
-        apodIsImage, apodURL, apodTitle  = getAPOD()
+        apodIsImage, apodURL, apodTitle  = getAPOD(datetime.now().strftime("%y%m%d"))
         if apodURL is None:
             exit(2)
             # Download image

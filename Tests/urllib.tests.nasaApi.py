@@ -1,24 +1,16 @@
-#test API KEY
-
 from urllib.request import Request, urlopen
 import json
+from datetime import datetime
 
-def getAPOD() -> dict:
+def getAPOD(date) -> dict:
 
-    my_url = "https://api.nasa.gov/planetary/apod"
-    my_header="api_key=DEMO_KEY"
-    with urlopen(my_url+"?"+my_header) as response: 
+    with urlopen(f"https://science.nasa.gov/wp-json/wp/v2/apod-basic/{date}") as response:
         print(response.status)
-        body = response.read()
-    #Request ne marche pas car HTTP seulement
-    #my_headers = { "api_key" : "DEMO_KEY" }
-    #req=Request(url=my_url,headers=my_headers)
-    #with urlopen(req) as response: body = response.read()
+        body = json.load(response)
 
-    #todo_item= json.loads(body)
-    #print(type(todo_item))
-    #print(todo_item)
+    return body
 
-    return json.loads(body)
+date = datetime.now().strftime("%y%m%d")
+response = getAPOD(date)
+print(json.dumps(response, indent=4, ensure_ascii=False))
 
-print(getAPOD())

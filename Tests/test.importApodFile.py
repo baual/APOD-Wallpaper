@@ -48,12 +48,8 @@ None     - Error
 
 import json
 
-def getAPOD() -> tuple:
-    logger.info("Downloading APOD image URL")
-    # Used DEMO_KEY as the api_key since the constraints are based on IP
-    my_url = "https://api.nasa.gov/planetary/apod"
-    my_header="api_key=DEMO_KEY"
-    with urlopen(my_url+"?"+my_header) as response: 
+def getAPOD(date) -> tuple:
+    with urlopen(f"https://science.nasa.gov/wp-json/wp/v2/apod-basic/{date}") as response:
     # Status code check
         if response.status == 200:
             logger.info("Download successful")
@@ -91,14 +87,17 @@ def downloadAPOD(apodURL, apodPath, apodIsImage) -> int:
         result = 1
     return result
 
-from os.path    import expanduser, abspath
+from os.path import abspath
+#from os.path import expanduser
+from datetime import datetime
 
-apodIsImage, apodURL, apodTitle  = getAPOD()
+date = datetime.now().strftime("%y%m%d")
+apodIsImage, apodURL, apodTitle  = getAPOD(date)
 
 # does not work well on windows even if that is for Linux I would like to have a cross-platform solution
-#apodPath = expanduser("~/.APOD/wallpaper.png")
+#apodPath = expanduser("~/.APOD/wallpaper.jpg")
 # Solution with absolute path abspath()
-apodPath= abspath("./wallpaper.png") 
+apodPath= abspath("./wallpaper.jpg") 
 print(apodPath)
 
 if apodURL is None:

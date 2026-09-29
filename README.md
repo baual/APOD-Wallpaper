@@ -2,7 +2,9 @@
 
 ## Basic Info
 
-Il s'agit d'une refonte d'un [script original en python](https://github.com/charly98cma/apod-wallpaper) de [Charly98cma](https://github.com/Charly98cma) utilisant l'API NASA *Astronomy Picture Of the Day* ([APOD](https://science.nasa.gov/apod)) pour définir l'APOD comme image de fond d'écran à chaque fois que vous exécutez le script.
+Il s'agit d'une refonte d'un [script original en python](https://github.com/charly98cma/apod-wallpaper) de [Charly98cma](https://github.com/Charly98cma) utilisant l'API NASA *Astronomy Picture Of the Day* ([APOD](https://api.nasa.gov/planetary/apod)) pour définir l'APOD comme image de fond d'écran à chaque fois que vous exécutez le script.
+
+L'API a changé, elle doit être appelée par https://science.nasa.gov/wp-json/wp/v2/apod-basic/{date} et la clef n'est plus nécessaire. J'en ai profité pour nettoyer un peu.
 
 Et, comme nous sommes tous assez paresseux, *systemd* lancera le script au démarrage, après avoir eu une connexion internet, il suffit de suivre les instructions ci-dessous.
 
@@ -24,7 +26,7 @@ make uninstall
 
 #### Dépendances
 
-Vous avez besoin de [Python 3.11 minimum](https://www.python.org/), [pip](https://pypi.org/project/pip/), le programme [feh](https://feh.finalrewind.org/) (feh est installé avec apt-get dans le makefile).
+Vous avez besoin de [Python 3.10 minimum](https://www.python.org/), [pip](https://pypi.org/project/pip/), [pillow](https://pypi.org/project/pillow/), le programme [feh](https://feh.finalrewind.org/) (feh est installé avec apt-get dans le makefile).
 
 ``` bash
 make init
