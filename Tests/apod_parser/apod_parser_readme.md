@@ -54,9 +54,9 @@ date = apod_object_parser.get_hdurl(response)
 there are also other functions that might help you in situations
 
 ### download_image
-the `download_image` function takes the url (hdurl or url) and the date from the function `get_date` and downloads the image in the current directory and with the file name of the date. the image downloaded is in the .jpg format
+the `download_image` function takes the url (hdurl or url) and the date from the function `get_date` and downloads the image in the current directory and with the file name of the date. the image downloaded is in the .jpg format. "size" is a string, you can use what ever you want. 
 ```python
-apod_object_parser.download_image(url, date)
+apod_object_parser.download_image(url, date, size)
 ```
 
 ### convert_image

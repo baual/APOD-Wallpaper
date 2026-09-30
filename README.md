@@ -2,12 +2,13 @@
 
 ## Basic Info
 
-Il s'agit d'une refonte d'un [script original en python](https://github.com/charly98cma/apod-wallpaper) de [Charly98cma](https://github.com/Charly98cma) utilisant l'API NASA *Astronomy Picture Of the Day* ([APOD](https://api.nasa.gov/planetary/apod)) pour définir l'APOD comme image de fond d'écran à chaque fois que vous exécutez le script.
+Il s'agit d'une refonte d'un [script original en python](https://github.com/charly98cma/apod-wallpaper) de [Charly98cma](https://github.com/Charly98cma) utilisant l'API NASA *Astronomy Picture Of the Day* ([APOD](https://science.nasa.gov/wp-json/wp/v2/apod-basic/?api_key=DEMO_KEY)) pour définir l'APOD comme image de fond d'écran à chaque fois que vous exécutez le script.
 
-L'API a changé, elle doit être appelée par https://science.nasa.gov/wp-json/wp/v2/apod-basic/{date} et la clef n'est plus nécessaire. J'en ai profité pour nettoyer un peu.
+L'API a changé, elle doit être appelée par https://science.nasa.gov/wp-json/wp/v2/apod-basic/{date}. La date est importante sinon on récupère quelque chose comme 27 références de date et la réponse renvoyée est une Liste de dictionnaires, liste composée de un dictionnaire par date.
 
-Et, comme nous sommes tous assez paresseux, *systemd* lancera le script au démarrage, après avoir eu une connexion internet, il suffit de suivre les instructions ci-dessous.
+Question en suspens : la clef 'url' point non pas sur une image à petite résolution mais sur la page décrivant l'image du jour en question. y aurait-il une inconsistence avec la documentation ?
 
+systemd* lancera le script au démarrage, après avoir eu une connexion internet, il suffit de suivre les instructions ci-dessous.
 ## Makefile
 
 ### installer le service
@@ -26,7 +27,7 @@ make uninstall
 
 #### Dépendances
 
-Vous avez besoin de [Python 3.10 minimum](https://www.python.org/), [pip](https://pypi.org/project/pip/), [pillow](https://pypi.org/project/pillow/), le programme [feh](https://feh.finalrewind.org/) (feh est installé avec apt-get dans le makefile).
+Vous avez besoin de [Python 3.10 minimum](https://www.python.org/), [pip](https://pypi.org/project/pip/), le programme [feh](https://feh.finalrewind.org/) (feh est installé avec apt-get dans le makefile).
 
 ``` bash
 make init
@@ -53,6 +54,6 @@ Et c'est tout, à partir de maintenant, après le démarrage du système, le scr
 
 ## Références
 
-J'utilise la **api_key** par défaut pour les requêtes APOD, car les contraintes d'utilisation sont basées sur l'IP de l'utilisateur, ce qui n'est pas un problème pour ce projet, puisque chaque utilisateur ne téléchargera l'image qu'une fois par jour. ([Github](https://github.com/nasa/apod-api))
+[Github APOD API](https://github.com/nasa/apod-api)
 
-Mais si vous souhaitez utiliser votre propre clé, vous pouvez en demander une sur le site [NASA Open APIs](https://api.nasa.gov/).
+[NASA Open APIs](https://api.nasa.gov/).

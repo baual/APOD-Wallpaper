@@ -1,9 +1,10 @@
 import json
 import os
 
-
 from urllib.request import Request, urlopen, urlretrieve
-from PIL import Image
+
+# PIL (pillow) est utilisé pour convertir les images mais on n'en a plus besoin, ellles sont désormais toutes au format JPG
+# from PIL import Image
 
 
 def get_data(date) -> dict:
@@ -40,16 +41,17 @@ def get_date(response):
     date = response["date"]
     return date
 
-def download_image(url, date, apodPath):
-    if os.path.isfile(apodPath) == False:
+def download_image(url, date, size:str):
+    if os.path.isfile(f"{date}-{size}.jpg") == False:
         with urlopen(url) as response: 
             if response.status== 200:
-                urlretrieve(url,apodPath)
+                urlretrieve(url, f"{date}-{size}.jpg")
     else:
         return FileExistsError
 
 
 # in theorie not needed. everything is already in jpg format. but just in case, we can convert the image to jpg
+'''
 def convert_image(image_path):
     path_to_image = os.path.normpath(image_path)
 
@@ -61,3 +63,4 @@ def convert_image(image_path):
 
     image = Image.open(path_to_image)
     image.save(f"{base_directory}/{filename_no_extension}.jpg", "JPEG")
+'''

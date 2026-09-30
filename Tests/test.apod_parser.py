@@ -1,6 +1,4 @@
-from posixpath import abspath
-
-import apod_object_parser as apod_parser
+import apod_parser.apod_object_parser as apod_parser
 import json
 
 from datetime import datetime
@@ -22,8 +20,6 @@ print("get title: " + apod_parser.get_title(response))
 
 print("get date: " + apod_parser.get_date(response))
 
-apodPath= abspath("./wallpaper.jpg")
+apod_parser.download_image(apod_parser.get_url(response), apod_parser.get_date(response), "small")
 
-#apod_parser.download_image(apod_parser.get_url(response), apod_parser.get_date(response), apodPath)
-
-apod_parser.download_image(apod_parser.get_hdurl(response), apod_parser.get_date(response), apodPath)
+apod_parser.download_image(apod_parser.get_hdurl(response), apod_parser.get_date(response), "large")

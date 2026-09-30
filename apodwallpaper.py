@@ -64,11 +64,10 @@ def getAPOD(date) -> tuple:
         if response.status == 200:
             logger.info("Download successful")
             information = json.loads(response.read())
-            if information.get('media_type') == "image":
-                url = information['hdurl']
+            if information['media_type'] == "image":
+                url = information.get('hdurl', information.get('url')) #on utilise .get() si l'information peut être manquante, sinon on utilise ['key'] qui lèvera une exception si la clé n'existe pas
                 isphoto = True
-            elif information.get('media_type') == "video":
-                url = information['url']
+            elif information['media_type'] == "video":
                 isphoto = False
             else:
                 raise RuntimeError("APOD is not an image or video")
