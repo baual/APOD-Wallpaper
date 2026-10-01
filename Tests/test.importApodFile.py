@@ -35,9 +35,10 @@ print(internet_conn())
 
 
 """
-getAPOD() 
+getAPOD(date) 
 
 Function that gets the APOD url using the NASA API
+entry value date "yymmdd"
 
 Return value (str)
 ------------------
