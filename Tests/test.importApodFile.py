@@ -56,7 +56,7 @@ def getAPOD(date) -> tuple:
             logger.info("Download successful")
             information = json.loads(response.read())
             if information['media_type'] == "image":
-                url = information.get('hdurl', information.get('url')) # si pas 'hdurl' on prend 'url'
+                url = information['hdurl']
                 isphoto = True
             elif information['media_type'] == "video":
                 isphoto = False

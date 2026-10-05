@@ -48,9 +48,10 @@ def internet_conn() -> bool:
 
 
 """
-getAPOD() 
+getAPOD(date) 
 
 Function that gets the APOD url using the NASA API
+entry value date "yymmdd"
 
 Return value (tuple)
 ------------------
@@ -65,7 +66,7 @@ def getAPOD(date) -> tuple:
             logger.info("Download successful")
             information = json.loads(response.read())
             if information['media_type'] == "image":
-                url = information.get('hdurl', information.get('url')) #on utilise .get() si l'information peut être manquante, sinon on utilise ['key'] qui lèvera une exception si la clé n'existe pas
+                url = information['hdurl']
                 isphoto = True
             elif information['media_type'] == "video":
                 isphoto = False

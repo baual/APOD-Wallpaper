@@ -1,6 +1,6 @@
 # apod_object_parser
 
-get a Nasa api key by clicking <a href="https://api.nasa.gov/#signUp">here</a>.
+Even if it is not needed for this project you can get a Nasa api key by clicking <a href="https://api.nasa.gov/#signUp">here</a>.
 
 ## How to use
 1. import the file
@@ -38,10 +38,10 @@ the `get_title` function takes the dictionary we got above and returns the title
 date = apod_object_parser.get_title(response)
 ```
 ### get_url
-the `get_url` function takes the dictionary we got above and returns the Standard definition url of the image.
+the `get_url` function takes the dictionary we got above and returns the web page of the day.
 
 ```python
-date = apod_object_parser.get_hdurl(response)
+date = apod_object_parser.get_url(response)
 ```
 ### get_media_type
 the `get_media_type` function takes the dictionary we got above and returns the media type the file (might be a video of a image).
@@ -54,13 +54,13 @@ date = apod_object_parser.get_hdurl(response)
 there are also other functions that might help you in situations
 
 ### download_image
-the `download_image` function takes the url (hdurl or url) and the date from the function `get_date` and downloads the image in the current directory and with the file name of the date. the image downloaded is in the .jpg format. "size" is a string, you can use what ever you want. 
+the `download_image` function takes the url (hdurl or url) and the date from the function `get_date` and downloads the image in the current directory and with the file name of the date. the image downloaded is in the .jpg format.
 ```python
-apod_object_parser.download_image(url, date, size)
+apod_object_parser.download_image(url, date)
 ```
 
 ### convert_image
-sometimes the image we downloaded above might not be in the right format (.jpg) so you may call `convert_image` function to convert the image into .png. takes the `image_path` parameter which is the filepath. In theroe it is not needed. Every image coming from APOD will be JPG one.
+sometimes the image we downloaded above might not be in the right format (.jpg) so you may call `convert_image` function to convert the image into .png. takes the `image_path` parameter which is the filepath. In theory it is not needed. Every image coming from APOD will be a JPG one.
 ```python 
 apod_object_parser.convert_image(image_path)
 ```

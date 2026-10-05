@@ -20,6 +20,4 @@ print("get title: " + apod_parser.get_title(response))
 
 print("get date: " + apod_parser.get_date(response))
 
-apod_parser.download_image(apod_parser.get_url(response), apod_parser.get_date(response), "small")
-
-apod_parser.download_image(apod_parser.get_hdurl(response), apod_parser.get_date(response), "large")
+apod_parser.download_image(apod_parser.get_hdurl(response), apod_parser.get_date(response))

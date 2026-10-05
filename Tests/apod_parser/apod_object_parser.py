@@ -41,11 +41,11 @@ def get_date(response):
     date = response["date"]
     return date
 
-def download_image(url, date, size:str):
-    if os.path.isfile(f"{date}-{size}.jpg") == False:
+def download_image(url, date):
+    if os.path.isfile(f"{date}.jpg") == False:
         with urlopen(url) as response: 
             if response.status== 200:
-                urlretrieve(url, f"{date}-{size}.jpg")
+                urlretrieve(url, f"{date}.jpg")
     else:
         return FileExistsError
 
